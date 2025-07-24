@@ -13,13 +13,23 @@ export function App() {
         setAngka(angka - 1)
     }
 
+    const onReset = () => {
+      setAngka(0)
+    }
+
   return (
-    <div className="container mx-auto p-8 text-center relative z-10">
+    <div className="text-center">
       <Counter
         count={angka}
         onIncrement={increment}
         onDecrement={decrement}
       />
+      <button
+        className='w-20 h-10 items-center justify-center rounded-[5px] bg-blue-500 text-white'
+        onClick={onReset}
+      >
+        RESET
+      </button>
     </div>
   );
 }
