@@ -1,1 +1,1 @@
-export * from './profile-card.interface';
+export * from './rergister-form.interface'
