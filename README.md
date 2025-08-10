@@ -1,18 +1,14 @@
-# Counter App
+# Profile Card
 
-A simple counter application built with React Tailwind and TypeScript that demonstrates state management using props (lifting state up).
-Users can increment, decrement, or reset the counter.
+A responsive profile card component built using React, Tailwind CSS, and ShadCN UI. It displays a user’s avatar, name, description, and social media links with dynamic icons.
 
 ## 📷 Screenshot
 
-### Initial Screen
-![Initial Screen](./src/public/images/counter-initial.png)
+### Dekstop Mode
+![Dekstop Mode](./docs/images/dekstop-mode.png)
 
-### After Click +
-![After Increment](./src/public/images/counter-incremented.png)
-
-### After Click -
-![After Decrement](./src/public/images/counter-decremented.png)
+### Mobile Mode
+![Mobile Mode](./docs/images/mobile-mode.png)
 
 ## 🚀 Getting Started
 
@@ -47,17 +43,30 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
 ## Project Structure
 
 ```ts
+└── 📁docs // documentation directory
+    └── 📁images
+            ├── dekstop-mode.png
+            ├── mobile-mode.png
 └── 📁src   // Main source directory
     └── 📁components    // Reusable UI components
         └── 📁shared    // Shared components
-            ├── Counter.tsx  
+            ├── index.ts
+            ├── ProfileCard.tsx
         └── 📁ui    // Shadcn UI components 
+            ├── avatar.tsx  
             ├── button.tsx  
             ├── card.tsx
             ├── form.tsx
+            ├── index.ts
             ├── input.tsx
             ├── label.tsx
             ├── select.tsx
+        └── 📁data  // Data user profile
+            ├── index.ts
+            ├── profile.ts
+        └── 📁interfaces // Interface for data user profile
+            ├── index.ts
+            ├── profile-card.interface.ts
     └── 📁hooks   // Custom hooks
     └── 📁lib   // Library functions
         ├── utils.ts    // Utility functions
@@ -65,6 +74,7 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
     └── 📁public    // Public assets
         └── 📁images    // Image assets
             ├── logo.svg
+            ├── profile-picture.jpg
             ├── react.svg
         └── 📁styles    // CSS Styles directory
             ├── globals.css
@@ -88,16 +98,23 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
 └── tsconfig.json   // TypeScript configuration
 ```
 
-## ✨ Feature
+## ✨ Features
 
-- Increment & Decrement counter
-- Reset button to clear count
-- Counter state lifted to parent component
-- Tailwind CSS styling
+- 🧩 **Reusable Profile Card Component** — Display a user's avatar, name, bio, and social media links.
+- 🎨 **Built with Tailwind CSS** — Easy to customize and responsive out of the box.
+- 🧱 **Modular Structure** — Organized using `interfaces/` and `components/ui` for scalability.
+- 📱 **Responsive** — Optimized for mobile and desktop views.
+- 🛠️ **Type-Safe with TypeScript** — Ensures reliable and predictable code.
+- ⚡ **Powered by shadcn/ui** — Uses prebuilt accessible UI components (e.g., Avatar, Button).
+- 🔧 **Dynamic Social Icons** — Supports different social platforms via dynamic icons.
+
+
 
 ## 🛠️ Built With
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Bun](https://bun.sh/)
+- [React](https://reactjs.org/) — Frontend library for building UI
+- [TypeScript](https://www.typescriptlang.org/) — Strongly typed JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.dev/) — Prebuilt accessible UI components
+- [Lucide Icons](https://lucide.dev/) — Open source icon set
+- [bun](https://bun.sh/) — All-in-one JavaScript runtime
