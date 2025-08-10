@@ -1,37 +1,50 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { APITester } from "./APITester";
+import type { RegisterFormValue } from "@/interfaces";
+import { RegistrationForm } from "@/components/shared";
+import { Card, CardContent, CardHeader, CardTitle, Toaster } from "@/components/ui";
+import { useState } from "react";
 import "@/public/styles/globals.css";
 
-import logo from "@/public/images/logo.svg";
-import reactLogo from "@/public/images/react.svg";
-
 export function App() {
+  const [users, setUsers] = useState<RegisterFormValue[]>([]);
+  
   return (
-    <div className="container mx-auto p-8 text-center relative z-10">
-      <div className="flex justify-center items-center gap-8 mb-8">
-        <img
-          src={logo}
-          alt="Bun Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#646cffaa] scale-120"
+    <div className="flex flex-col md:flex-row gap-5 m-5">
+        <RegistrationForm
+          onRegister={(userData) => setUsers((prev) => [...prev, userData])}
         />
-        <img
-          src={reactLogo}
-          alt="React Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa] [animation:spin_20s_linear_infinite]"
-        />
-      </div>
 
-      <Card className="bg-card/50 backdrop-blur-sm border-muted">
-        <CardContent className="pt-6">
-          <h1 className="text-5xl font-bold my-4 leading-tight">Bun + React</h1>
-          <p>
-            Edit{" "}
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">src/App.tsx</code> and
-            save to test HMR
-          </p>
-          <APITester />
-        </CardContent>
-      </Card>
+      <div>
+        <Card>
+          <CardHeader>
+            <CardTitle>USER REGISTER</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col-reverse gap-5">
+            {users.length === 0 ? (
+               <p className="text-gray-500">Fill the form to add a user.</p>
+              ) : (
+                users.map((user, index) => (
+                  <Card key={index} className="p-5">
+                    <p>Name: {user.fullName}</p>
+                    <p>Email: {user.email}</p>
+                    <p>Password: {user.password}</p>
+                    <p>Age: {user.age}</p>
+                    <p>Birthdate: {user.birthdate 
+                      ? new Date(user.birthdate).toLocaleDateString("en-US", { 
+                          day: "2-digit", 
+                          month: "long", 
+                          year: "numeric" 
+                        }) 
+                      : "No date"}</p>
+                    <p>Gender: {user.gender}</p>
+                    <p>Learning Path: {user.learningPath.join(", ")}</p>
+                    {user.notes && <p>Notes: {user.notes}</p>}
+                  </Card>
+                )))
+            }
+          </CardContent>
+        </Card>
+      </div>
+      <Toaster/>
     </div>
   );
 }
