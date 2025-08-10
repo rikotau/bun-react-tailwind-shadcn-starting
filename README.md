@@ -72,6 +72,7 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
     └── 📁public    // Public assets
         └── 📁images    // Image assets
             ├── logo.svg
+            ├── profile-picture.jpg
             ├── react.svg
         └── 📁styles    // CSS Styles directory
             ├── globals.css
