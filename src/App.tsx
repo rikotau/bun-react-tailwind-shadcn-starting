@@ -1,35 +1,20 @@
+import { UseCharacters } from "@/hooks";
+import { ButtonTheme, SearchBar, CharacterCard, Counter } from "@/components/shared";
 import "@/public/styles/globals.css";
-import { Counter } from "./components/shared/Counter";
-import { useState } from "react";
 
-export function App() {
-    const [angka, setAngka] = useState<number>(0);
-
-    const increment = () => {
-        setAngka(angka + 1)
-    }
-
-    const decrement = () => {
-        setAngka(angka - 1)
-    }
-
-    const onReset = () => {
-      setAngka(0)
-    }
+export function App() {    
+      const { filteredCharacters, search, setSearch, loading } = UseCharacters()
 
   return (
-    <div className="text-center">
-      <Counter
-        count={angka}
-        onIncrement={increment}
-        onDecrement={decrement}
-      />
-      <button
-        className='w-20 h-10 items-center justify-center rounded-[5px] bg-blue-500 text-white'
-        onClick={onReset}
-      >
-        RESET
-      </button>
+    <div className="grid text-center m-10 gap-2">
+      <div className="grid gap-2 md:grid-cols-2">
+        <ButtonTheme/>
+        <SearchBar input={search} onChange={setSearch}/>
+      </div>
+      <CharacterCard characters={filteredCharacters} loading={loading}/>
+      <div className="md:min-w-1/2 md:mx-auto mt-10">
+        <Counter/>
+      </div>
     </div>
   );
 }

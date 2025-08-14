@@ -1,33 +1,35 @@
-import React, { useState } from 'react'
+import { counterStore } from '@/store/counterStore'
+import { useShallow } from 'zustand/react/shallow'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button } from '@/components/ui'
 
-export const Counter = ({
-    count,
-    onIncrement,
-    onDecrement,
-}: {
-    count: number;
-    onIncrement: () => void;
-    onDecrement: () => void;
-}) => {
+export const Counter = () => {
+    const {count, increment, decrement, reset} = counterStore(
+        useShallow((state) => ({
+            count: state.count,
+            increment: state.increment,
+            decrement: state.decrement,
+            reset: state.reset,
+        }))
+    )
 
   return (
-    <>
-        <div className='font-bold'>COUNTER</div>
-        <h1 className='text-9xl mx-10 my-10'>{count}</h1>
-        <div className='flex justify-center items-center gap-1 mb-1'>
-            <button
-                className='w-10 h-10 flex items-center justify-center rounded-[5px] bg-green-500 text-white'
-                onClick={onIncrement}
-            >
-                +
-            </button>
-            <button
-                className='w-10 h-10 flex items-center justify-center rounded-[5px] bg-red-500 text-white'
-                onClick={onDecrement}
-            >
-                -
-            </button>
+    <Card>
+      <CardHeader>
+        <CardTitle>COUNTER</CardTitle>
+        <CardDescription>Counter App using Zustand</CardDescription>
+      </CardHeader>
+      <CardContent className='grid gap-1'>
+        <div className='text-9xl m-10'>
+          {count}
         </div>
-    </>
+        <div className='grid grid-cols-2 gap-1'>
+          <Button className='text-white bg-green-500 hover:bg-green-500/90 dark:bg-green-700 dark:hover:bg-green-700/90' onClick={increment}>+</Button>
+          <Button variant='destructive' onClick={decrement}>-</Button>
+        </div>
+        <div className='grid'>
+          <Button variant='secondary' onClick={reset}>Reset</Button>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
