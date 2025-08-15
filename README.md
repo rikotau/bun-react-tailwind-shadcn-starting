@@ -92,6 +92,7 @@ bun dev
             ├── index.tsx
             ├── SearchBar.tsx
         └── 📁ui    // Shadcn UI components 
+            ├── avatar.tsx  
             ├── button.tsx  
             ├── card.tsx
             ├── input.tsx
@@ -111,6 +112,7 @@ bun dev
     └── 📁public    // Public assets
         └── 📁images    // Image assets
             ├── logo.svg
+            ├── profile-picture.jpg
             ├── react.svg
         └── 📁styles    // CSS Styles directory
             ├── globals.css
