@@ -1,1 +1,2 @@
-export * from './profile-card.interface';
+export * from './character.interface'
+export * from './theme.interface'
