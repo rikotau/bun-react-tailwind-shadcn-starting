@@ -6,8 +6,8 @@
  */
 
 import { StrictMode } from "react";
+import { ThemeProvider } from "./context/ThemeContext";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 // Import the generated route tree
@@ -30,7 +30,9 @@ if (!elem) {
 
 const app = (
   <StrictMode>
-      <RouterProvider router={router} />
+    <ThemeProvider>
+        <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );
 

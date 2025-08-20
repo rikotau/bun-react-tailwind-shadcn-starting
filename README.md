@@ -1,73 +1,111 @@
-# Profile Card
+<a id="top"></a>
 
-A responsive profile card component built using React, Tailwind CSS, and ShadCN UI. It displays a user’s avatar, name, description, and social media links with dynamic icons.
+# Character Explorer & Counter
+
+**React + Zustand + Shadcn UI**
+
+An interactive character card viewer with search, theme toggle, and counter functionality.
+
+A React application that displays character cards fetched from an API with `useEffect`, featuring search with `useMemo`, theme toggling via `useContext`, and a counter state managed by `Zustand`. Built with Shadcn UI components for a modern, responsive design.
+
+---
+
+## ✨ Features
+- 🔢 Counter: Increment, decrement, and reset
+- 🌍 Global State: Managed with Zustand
+- 🔍 Search Characters: Fast filtering using useMemo
+- 🌗 Theme Toggle: Light/Dark mode with useContext
+- 📱 Responsive UI: Built with Shadcn UI + Tailwind CSS
+- ⚡ Fast Build: Powered by Bun
+
+## 🛠️ Built With
+
+- React – UI library
+- TypeScript – Typed JavaScript
+- Zustand – State management
+- Shadcn UI – Modern component library
+- Tailwind CSS – Utility-first CSS framework
+- Bun – Fast JavaScript runtime
 
 ## 📷 Screenshot
 
-### Dekstop Mode
-![Dekstop Mode](./docs/images/dekstop-mode.png)
+### Initial Screen Dekstop
+![Initial Screen Dekstop](./docs/images/01-initial-view-dekstop.png)
 
-### Mobile Mode
-![Mobile Mode](./docs/images/mobile-mode.png)
+### Loading view and counter increment dekstop
+![Loading view and counter increment dekstop](./docs/images/02-loading-card-counter-increase-dekstop.png)
+
+### Initial Screen Tablet
+![Initial Screen Tablet](./docs/images/03-initial-view-tablet.png)
+
+### Loading view and counter decrement tablet
+![Loading view and counter decrement tablet](./docs/images/03-loading-card-counter-decrease-tablet.png)
+
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <div style="padding: 20px; text-align: center;">
+    <h3>Counter reset and loading view mobile</h3>
+    <img src="./docs/images/04-loading-card-counter-reset-mobile.png" alt="Counter decrement and loading view mobile" width="300">
+  </div>
+  <div style="padding: 20px; text-align: center;">
+    <h3>Dark mode search character mobile</h3>
+    <img src="./docs/images/05-dark-mode-search-mobile.png" alt="Dark mode search character mobile" width="300">
+  </div>
+</div>
+
+
+<p style="text-align: center; margin-top: 20px;">
+  <a href="#top">⬆️ Back to Top</a>
+</p>
+
+___
 
 ## 🚀 Getting Started
 
-To install dependencies:
-
+### Install dependencies
 ```bash
 bun install
 ```
 
-To start a development server:
+### Run the development server
 
 ```bash
 bun dev
 ```
-
-To build the project:
-
-```bash
-bun run build
-```
-
-To run for production:
-
-```bash
-bun start
-```
-
-This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
 ---
 
 ## Project Structure
 
 ```ts
-└── 📁docs // documentation directory
+└── 📁docs   // documentations directory
     └── 📁images
-            ├── dekstop-mode.png
-            ├── mobile-mode.png
+        ├── 01-initial-view-dekstop.png
+        ├── 02-loading-card-counter-increase-dekstop.png
+        ├── 03-loading-card-counter-decrease-tablet.png
+        ├── 04-loading-card-counter-reset-mobile.png
+        ├── 05-dark-mode-search-mobile.png
 └── 📁src   // Main source directory
     └── 📁components    // Reusable UI components
         └── 📁shared    // Shared components
-            ├── index.ts
-            ├── ProfileCard.tsx
+            ├── ButtonTheme.tsx
+            ├── ChararacterCard.tsx
+            ├── Counter.tsx
+            ├── index.tsx
+            ├── SearchBar.tsx
         └── 📁ui    // Shadcn UI components 
             ├── avatar.tsx  
             ├── button.tsx  
             ├── card.tsx
-            ├── form.tsx
-            ├── index.ts
             ├── input.tsx
-            ├── label.tsx
-            ├── select.tsx
-        └── 📁data  // Data user profile
-            ├── index.ts
-            ├── profile.ts
-        └── 📁interfaces // Interface for data user profile
-            ├── index.ts
-            ├── profile-card.interface.ts
+            ├── skeleton.tsx
+    └── 📁context   // Custom context
+        ├── ThemeContext.tsx
     └── 📁hooks   // Custom hooks
+        ├── index.ts
+        ├── UseCharacters.tsx
+    └── 📁interfaces   // Custom hooks
+        ├── character.interface.ts
+        ├── index.ts
+        ├── theme.interface.ts
     └── 📁lib   // Library functions
         ├── utils.ts    // Utility functions
     └── 📁pages   // Page components
@@ -81,7 +119,11 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
         ├── index.html    // Main HTML file
     └── 📁routes    // Application routes
     └── 📁stores    // Global state management (Zustand)
+        ├── counterStore.ts
     └── 📁types   // TypeScript type definitions
+        ├── index.ts
+        ├── store.type.ts
+        ├── theme.type.ts
     ├── APITester.tsx   // API testing component
     ├── App.tsx   // Main application component
     ├── index.ts    // Entry point for the application
@@ -98,23 +140,6 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
 └── tsconfig.json   // TypeScript configuration
 ```
 
-## ✨ Features
-
-- 🧩 **Reusable Profile Card Component** — Display a user's avatar, name, bio, and social media links.
-- 🎨 **Built with Tailwind CSS** — Easy to customize and responsive out of the box.
-- 🧱 **Modular Structure** — Organized using `interfaces/` and `components/ui` for scalability.
-- 📱 **Responsive** — Optimized for mobile and desktop views.
-- 🛠️ **Type-Safe with TypeScript** — Ensures reliable and predictable code.
-- ⚡ **Powered by shadcn/ui** — Uses prebuilt accessible UI components (e.g., Avatar, Button).
-- 🔧 **Dynamic Social Icons** — Supports different social platforms via dynamic icons.
-
-
-
-## 🛠️ Built With
-
-- [React](https://reactjs.org/) — Frontend library for building UI
-- [TypeScript](https://www.typescriptlang.org/) — Strongly typed JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
-- [shadcn/ui](https://ui.shadcn.dev/) — Prebuilt accessible UI components
-- [Lucide Icons](https://lucide.dev/) — Open source icon set
-- [bun](https://bun.sh/) — All-in-one JavaScript runtime
+<p style="text-align: center; margin-top: 20px;">
+  <a href="#top">⬆️ Back to Top</a>
+</p>
