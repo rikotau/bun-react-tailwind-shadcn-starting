@@ -8,7 +8,7 @@ export const Route = createFileRoute('/profile')({
 
 function Profile() {
   return (
-      <div className="text-center">
+      <div className="max-w-fit mx-auto min-h-screen">
         <ProfileCard
           name={profileData.name}
           description={profileData.description}

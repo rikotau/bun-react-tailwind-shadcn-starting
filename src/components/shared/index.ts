@@ -1,4 +1,5 @@
 export * from './ButtonTheme'
 export * from './CharacterCard'
 export * from './Counter'
+export * from './ProfileCard'
 export * from './SearchBar'

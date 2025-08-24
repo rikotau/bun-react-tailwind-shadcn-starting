@@ -1,4 +1,4 @@
-import { Card, CardTitle, Skeleton } from '@/components/ui'
+import { Card, CardContent, CardDescription, CardTitle, Skeleton } from '@/components/ui'
 import type { CharacterCardProps } from '@/interfaces'
 
 export const CharacterCard = ({ characters, loading }: CharacterCardProps) => {
@@ -15,6 +15,8 @@ export const CharacterCard = ({ characters, loading }: CharacterCardProps) => {
           <Card key={index} className="flex flex-col p-4 gap-2 min-w-44">
             <Skeleton className="h-48 rounded-lg" />
             <Skeleton className="h-3 w-1/2 mt-2 mx-auto" />
+            <Skeleton className="h-3 w-1/3 mt-2" />
+            <Skeleton className="h-10 mt-1" />
           </Card>
         ))}
       </div>
@@ -35,6 +37,13 @@ export const CharacterCard = ({ characters, loading }: CharacterCardProps) => {
                 className="h-80 md:h-48 object-contain"
               />
               <CardTitle>{character.name}</CardTitle>
+              <CardContent className='text-justify'>
+                <p>Description: </p>
+
+              <CardDescription className='line-clamp-3 leading-relaxed break-words'>
+                {character.description}
+              </CardDescription>
+              </CardContent>
             </Card>
           ))}
         </div>

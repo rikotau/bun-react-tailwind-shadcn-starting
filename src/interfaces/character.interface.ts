@@ -1,10 +1,6 @@
-export interface Character {
-  id: string;
-  name: string;
-  image: string;
-}
+import type { DragonballItem } from "./";
 
 export interface CharacterCardProps {
-  characters: Character[];
+  characters: DragonballItem[];
   loading: boolean;
 }
