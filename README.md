@@ -1,74 +1,144 @@
-# Profile Card
+<a id="top"></a>
 
-A responsive profile card component built using React, Tailwind CSS, and ShadCN UI. It displays a user’s avatar, name, description, and social media links with dynamic icons.
+# Dragonball Character Explorer
+
+**React + TanStack + Shadcn UI**
+
+A React project built with TanStack Router, Query, and Table combined with Shadcn UI to explore Dragon Ball characters.
+It features clean routing with TanStack Router, data fetching using Axios with TanStack Query, server-side pagination, dynamic search by name (via query parameters), and a responsive table interface for a smooth browsing experience.
+
+---
+
+## ✨ Features
+- 🔍 **Search Characters**: Search by name using query parameters
+- 📑 **Pagination**: Server-side pagination with page navigation
+- 🗂 **Table View**: Character list displayed using Shadcn Table
+- 🌗 **Theme Toggle**: Light/Dark mode with Shadcn + Tailwind
+- 🌐 **Routing**: Clean and type-safe navigation with TanStack Router
+- 📡 **Data Fetching**: Axios + TanStack Query integration for API calls
+- 📱 **Responsive UI**: Built with Shadcn UI + Tailwind CSS
+- ⚡ **Fast Build**: Powered by Bun
+
+## 🛠️ Built With
+- **React** – UI library
+- **TypeScript** – Typed JavaScript
+- **TanStack Router** – File-based routing
+- **TanStack Query** – Data fetching & caching
+- **TanStack Table** – Table rendering and pagination
+- **Axios** – HTTP client for API requests
+- **Shadcn UI** – Modern component library
+- **Tailwind CSS** – Utility-first CSS framework
+- **Bun** – Fast JavaScript runtime
+
 
 ## 📷 Screenshot
 
-### Dekstop Mode
-![Dekstop Mode](./docs/images/dekstop-mode.png)
+### Initial Screen Dekstop
+![Initial Screen](./docs/images/01-initial-screen.png)
 
-### Mobile Mode
-![Mobile Mode](./docs/images/mobile-mode.png)
+### Routing Page Characters
+![Routing Page Characters](./docs/images/02-routing-characters.png)
+
+### Routing Page Profile
+![Routing Page Profile](./docs/images/03-routing-profile.png)
+
+### Loading Skeleton Character Page
+![Loading Skeleton Character Page](./docs/images/04-loading-characters.png)
+
+### Search By Name Characters
+![Search By Name Characters](./docs/images/05-search-characters.png)
+
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <div style="padding: 20px; text-align: center;">
+    <h3>Pagination Characters</h3>
+    <img src="./docs/images/06-pagination-characters.png" alt="Counter decrement and loading view mobile" width="300">
+  </div>
+</div>
+
+
+<p style="text-align: center; margin-top: 20px;">
+  <a href="#top">⬆️ Back to Top</a>
+</p>
+
+___
 
 ## 🚀 Getting Started
 
-To install dependencies:
-
+### Install dependencies
 ```bash
 bun install
 ```
+### Add .env
+```bash
+BUN_PUBLIC_DRAGONBALL_URL=https://dragonball-api.com/api/
+```
 
-To start a development server:
+### Run the development server
 
 ```bash
 bun dev
 ```
 
-To build the project:
-
-```bash
-bun run build
-```
-
-To run for production:
+### Run the production server
 
 ```bash
 bun start
 ```
-
-This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
 ---
 
 ## Project Structure
 
 ```ts
-└── 📁docs // documentation directory
+└── 📁docs   // documentations directory
     └── 📁images
-            ├── dekstop-mode.png
-            ├── mobile-mode.png
+        ├── 01-initial-screen.png
+        ├── 02-routing-characters.png
+        ├── 03-routing-profile.png
+        ├── 04-loading-characters.png
+        ├── 05-search-characters.png
+        ├── 06-pagination-characters.png
 └── 📁src   // Main source directory
     └── 📁components    // Reusable UI components
         └── 📁shared    // Shared components
-            ├── index.ts
+            └── 📁dragonball
+                ├── columns.tsx
+                ├── data-table.tsx
+                ├── DragonballTable.tsx
+            ├── ButtonTheme.tsx
+            ├── index.tsx
+            ├── Pagination.tsx
             ├── ProfileCard.tsx
+            ├── SearchBar.tsx
         └── 📁ui    // Shadcn UI components 
             ├── avatar.tsx  
-            ├── button.tsx  
+            ├── button.tsx
             ├── card.tsx
-            ├── form.tsx
-            ├── index.ts
+            ├── index.tsx
             ├── input.tsx
-            ├── label.tsx
-            ├── select.tsx
-        └── 📁data  // Data user profile
-            ├── index.ts
-            ├── profile.ts
-        └── 📁interfaces // Interface for data user profile
-            ├── index.ts
-            ├── profile-card.interface.ts
+            ├── pagination.tsx
+            ├── skeleton.tsx
+            ├── table.tsx
+    └── 📁context   // Custom context
+        ├── ThemeContext.tsx
+    └── data
+        ├── index.ts
+        ├── profile.ts
     └── 📁hooks   // Custom hooks
+        ├── index.ts
+        ├── UseDragonballCharacters.tsx
+        ├── UseDragonballCharSearch.tsx
+    └── 📁interfaces   // Custom hooks
+        ├── base.interface.ts
+        ├── character.interface.ts
+        ├── dragonball.interface.ts
+        ├── index.ts
+        ├── pagination.interface.ts
+        ├── profile-card.interface.ts
+        ├── table.interface.ts
+        ├── theme.interface.ts
     └── 📁lib   // Library functions
+        ├── api.ts    // Axios config
+        ├── index.ts
         ├── utils.ts    // Utility functions
     └── 📁pages   // Page components
     └── 📁public    // Public assets
@@ -80,8 +150,16 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
             ├── globals.css
         ├── index.html    // Main HTML file
     └── 📁routes    // Application routes
+        ├── __root.tsx
+        ├── characters.tsx
+        ├── index.tsx
+        ├── profile.tsx
     └── 📁stores    // Global state management (Zustand)
     └── 📁types   // TypeScript type definitions
+        ├── dragonball.type.ts
+        ├── index.ts
+        ├── store.type.ts
+        ├── theme.type.ts
     ├── APITester.tsx   // API testing component
     ├── App.tsx   // Main application component
     ├── index.ts    // Entry point for the application
@@ -98,23 +176,6 @@ This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.sh) 
 └── tsconfig.json   // TypeScript configuration
 ```
 
-## ✨ Features
-
-- 🧩 **Reusable Profile Card Component** — Display a user's avatar, name, bio, and social media links.
-- 🎨 **Built with Tailwind CSS** — Easy to customize and responsive out of the box.
-- 🧱 **Modular Structure** — Organized using `interfaces/` and `components/ui` for scalability.
-- 📱 **Responsive** — Optimized for mobile and desktop views.
-- 🛠️ **Type-Safe with TypeScript** — Ensures reliable and predictable code.
-- ⚡ **Powered by shadcn/ui** — Uses prebuilt accessible UI components (e.g., Avatar, Button).
-- 🔧 **Dynamic Social Icons** — Supports different social platforms via dynamic icons.
-
-
-
-## 🛠️ Built With
-
-- [React](https://reactjs.org/) — Frontend library for building UI
-- [TypeScript](https://www.typescriptlang.org/) — Strongly typed JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
-- [shadcn/ui](https://ui.shadcn.dev/) — Prebuilt accessible UI components
-- [Lucide Icons](https://lucide.dev/) — Open source icon set
-- [bun](https://bun.sh/) — All-in-one JavaScript runtime
+<p style="text-align: center; margin-top: 20px;">
+  <a href="#top">⬆️ Back to Top</a>
+</p>
