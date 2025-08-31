@@ -1,1 +1,2 @@
-export * from './register-form.interface'
+export * from './character.interface'
+export * from './theme.interface'
