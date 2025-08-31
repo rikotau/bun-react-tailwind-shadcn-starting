@@ -1,5 +1,7 @@
 export * from './base.interface'
 export * from './character.interface'
 export * from './dragonball.interface'
+export * from './pagination.interface'
 export * from './profile-card.interface'
+export * from './table.interface'
 export * from './theme.interface'

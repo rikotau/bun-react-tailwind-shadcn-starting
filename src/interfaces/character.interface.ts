@@ -1,6 +1,16 @@
 import type { DragonballItem } from "./";
 
-export interface CharacterCardProps {
+export interface CharacterProps {
   characters: DragonballItem[];
-  loading: boolean;
+  isLoading: boolean
+  page: number
+  totalPages: number
+  setPage: (page: number) => void
+  limit: number
+}
+
+export type CharProps = {
+  name: string
+  page: number
+  limit: number
 }
