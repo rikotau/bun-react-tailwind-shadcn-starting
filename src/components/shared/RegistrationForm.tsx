@@ -40,7 +40,6 @@ export const RegistrationForm: React.FC<RegisterFormProps> = ({ onRegister }) =>
     const { Field, handleSubmit, reset } = useForm({
         defaultValues,
         onSubmit: async ({ value }) => {
-            console.log(value)
             toast.success('Registration successful!')
             onRegister(value)
             reset()
