@@ -1,1 +1,1 @@
-export * from './rergister-form.interface'
+export * from './register-form.interface'
