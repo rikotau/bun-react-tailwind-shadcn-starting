@@ -176,6 +176,8 @@ bun start
 └── tsconfig.json   // TypeScript configuration
 ```
 
+[Back to top](#top)
+
 <p style="text-align: center; margin-top: 20px;">
   <a href="#top">⬆️ Back to Top</a>
 </p>
