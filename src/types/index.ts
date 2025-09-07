@@ -1,3 +1,5 @@
 export * from './dragonball.type'
 export * from './theme.type'
 export * from './store.type'
+export * from './cookie.type'
+export * from './storage.type'

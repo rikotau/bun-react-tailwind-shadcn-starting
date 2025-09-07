@@ -1,7 +1,6 @@
 import { ButtonTheme, DragonballTable, SearchBar } from '@/components/shared'
-import { useDragonballCharacters } from '@/hooks'
+import { useDragonballCharacters, useDragonballCharSearch } from '@/hooks'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useDragonballCharSearch } from '@/hooks'
 
 export const Route = createFileRoute('/characters')({
   component: Characters,

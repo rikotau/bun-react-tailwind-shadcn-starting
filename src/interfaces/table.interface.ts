@@ -11,3 +11,14 @@ export interface DragonballTableRow {
   ki: number | React.ReactNode
   image: string | React.ReactNode
 }
+
+export interface UsersTableRow {
+  id: number | React.ReactNode
+  name: string | React.ReactNode
+  email: string | React.ReactNode
+  role: string | React.ReactNode
+  gender: string | React.ReactNode
+  age: number | React.ReactNode
+  bio: string | React.ReactNode
+  image: string | React.ReactNode
+}
