@@ -1,10 +1,16 @@
-export interface Character {
-  id: string;
-  name: string;
-  image: string;
+import type { DragonballItem } from "./";
+
+export interface CharacterProps {
+  characters: DragonballItem[];
+  isLoading: boolean
+  page: number
+  totalPages: number
+  setPage: (page: number) => void
+  limit: number
 }
 
-export interface CharacterCardProps {
-  characters: Character[];
-  loading: boolean;
+export type CharProps = {
+  name: string
+  page: number
+  limit: number
 }

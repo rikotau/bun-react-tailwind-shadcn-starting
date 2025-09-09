@@ -1,19 +1,16 @@
-import { UseCharacters } from "@/hooks";
-import { ButtonTheme, SearchBar, CharacterCard, Counter } from "@/components/shared";
 import "@/public/styles/globals.css";
 
-export function App() {    
-      const { filteredCharacters, search, setSearch, loading } = UseCharacters()
+export function App() {
 
   return (
-    <div className="grid text-center m-10 gap-2">
-      <div className="grid gap-2 md:grid-cols-2">
-        <ButtonTheme/>
-        <SearchBar input={search} onChange={setSearch}/>
-      </div>
-      <CharacterCard characters={filteredCharacters} loading={loading}/>
-      <div className="md:min-w-1/2 md:mx-auto mt-10">
-        <Counter/>
+     <div className="flex items-center justify-center px-4 min-h-screen">
+      <div className="space-y-4 text-center">
+        <h1 className="text-5xl md:text-6xl font-bold">
+          Dragon Ball Explorer
+        </h1>
+        <p className="mx-auto max-w-2xl text-lg md:text-xl">
+          A quick dive into Dragon Ball's unforgettable characters.
+        </p>
       </div>
     </div>
   );
